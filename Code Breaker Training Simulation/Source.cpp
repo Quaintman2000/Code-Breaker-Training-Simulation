@@ -6,7 +6,9 @@
 using namespace std;
 
 bool playAgain = true;
+bool wordCleared;
 string answer;
+string lastChoice[3] = { "","","" };
 
 int main()
 {
@@ -15,19 +17,34 @@ int main()
 		const int NUM_WORDS = 5;
 		const string WORDS[NUM_WORDS][NUM_FIELDS] =
 		{
-			{"wall","Do you feel you're banging your head against something?"},
-			{"glasses","These might help you see the answer."},
-			{"labored","Going slowly, is it?"},
+			{"table","I'll put the food on the what?"},
+			{"phone","Call me."},
+			{"strength","Body builders have a great amount of what?"},
 			{"persistent","Keep at it"},
 			{"jumble","It's what the game is all about"}
 		};
 		for (int i = 0; i < 3; i++)
 		{
+			wordCleared = false;
 			srand(static_cast<unsigned int>(time(0)));
 			int choice = (rand() % NUM_WORDS);
 			string theWord = WORDS[choice][WORD]; // word to guess
 			string theHint = WORDS[choice][HINT]; // hint for word
 
+			//prevents it from using the same world as last time
+			//checks if the word as used last time
+			while (wordCleared==false)
+			{
+				if (theWord == lastChoice[0] || theWord == lastChoice[1] || theWord == lastChoice[2])
+				{
+					wordCleared = false;
+				}
+				else
+				{
+					wordCleared = true;
+				}
+			}
+			
 			string jumble = theWord; //jumbled version of word
 			int length = jumble.size();
 			for (int i = 0; i < length; i++)
@@ -73,6 +90,7 @@ int main()
 			{
 				return 0;
 			}
+			lastChoice[i] = theWord;
 		}
 		
 		cout << "\nWanna play again? 'Yes' or 'No'?\n";

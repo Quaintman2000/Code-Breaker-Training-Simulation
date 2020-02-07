@@ -8,7 +8,7 @@ using namespace std;
 bool playAgain = true;
 bool wordCleared;
 string answer;
-string lastChoice[3] = { "","","" };
+string lastChoice[4] = { "","","" };
 
 int main()
 {

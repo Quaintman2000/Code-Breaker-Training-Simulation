@@ -15,34 +15,7 @@ string theHint;
 
 int main()
 {
-	enum fields { WORD, HINT, NUM_FIELDS };
-	const int NUM_WORDS = 10;
-	const string WORDS[NUM_WORDS][NUM_FIELDS] =
-	{
-		{"table","I'll put the food on the what?"},
-		{"phone","Call me."},
-		{"strength","Body builders have a great amount of what?"},
-		{"persistent","Keep at it"},
-		{"jumble","It's what the game is all about"},
-		{"writer","an author is also a what?"},
-		{"discount","50% off is a huge what?"},
-		{"highway"," 'I'm on a [blank] to hell!' "},
-		{"single","Hey ladies, he's [blank]"},
-		{"mastermind","The joker is an evil [blank]"}
-	};
-	const string WORDSWithoutHints[NUM_WORDS][NUM_FIELDS] =
-	{
-		{"table","Sorry, you said no hints!"},
-		{"phone","Sorry, you said no hints!"},
-		{"strength","Sorry, you said no hints!"},
-		{"persistent","Sorry, you said no hints!"},
-		{"jumble","Sorry, you said no hints!"},
-		{"writer","Sorry, you said no hints!"},
-		{"discount","Sorry, you said no hints!"},
-		{"highway","Sorry, you said no hints!"},
-		{"single","Sorry, you said no hints!"},
-		{"mastermind","Sorry, you said no hints!"}
-	};
+	
 
 	cout << "\t\t\tWelcome to Word Jumble!\n\n";
 	cout << "Unscramble the letters to make a word.\n";
@@ -52,6 +25,34 @@ int main()
 	cin >> difficultyAnswer;
 
 	while (playAgain == true) {
+		enum fields { WORD, HINT, NUM_FIELDS };
+		const int NUM_WORDS = 10;
+		const string WORDS[NUM_WORDS][NUM_FIELDS] =
+		{
+			{"table","I'll put the food on the what?"},
+			{"phone","Call me."},
+			{"strength","Body builders have a great amount of what?"},
+			{"persistent","Keep at it"},
+			{"jumble","It's what the game is all about"},
+			{"writer","an author is also a what?"},
+			{"discount","50% off is a huge what?"},
+			{"highway"," 'I'm on a [blank] to hell!' "},
+			{"single","Hey ladies, he's [blank]"},
+			{"mastermind","The joker is an evil [blank]"}
+		};
+		const string WORDSWithoutHints[NUM_WORDS][NUM_FIELDS] =
+		{
+			{"table","Sorry, you said no hints!"},
+			{"phone","Sorry, you said no hints!"},
+			{"strength","Sorry, you said no hints!"},
+			{"persistent","Sorry, you said no hints!"},
+			{"jumble","Sorry, you said no hints!"},
+			{"writer","Sorry, you said no hints!"},
+			{"discount","Sorry, you said no hints!"},
+			{"highway","Sorry, you said no hints!"},
+			{"single","Sorry, you said no hints!"},
+			{"mastermind","Sorry, you said no hints!"}
+		};
 		for (int i = 0; i < 3; i++)
 		{
 			wordCleared = false;
@@ -98,7 +99,7 @@ int main()
 			string guess;
 			cout << "\n\nYour guess: ";
 			cin >> guess;
-
+			//if the player gets it wrong
 			while ((guess != theWord) && guess != "quit")
 			{
 				if (guess == "hint")
@@ -113,11 +114,12 @@ int main()
 				cout << "\n\nYour guess: ";
 				cin >> guess;
 			}
-
+			//if player guesses correctly
 			if (guess == theWord)
 			{
 				cout << "\nThat's it! You guessed it!\n";
 			}
+			//when the player types quit
 			if (guess == "quit")
 			{
 				return 0;
@@ -127,7 +129,7 @@ int main()
 
 		cout << "\nWanna play again? 'Yes' or 'No'?\n";
 		cin >> answer;
-
+		//sends the compiler back to the beginning if the player wants to go again and leaves if doesn't
 		if (answer == "Yes" || answer == "yes")
 		{
 			playAgain = true;
